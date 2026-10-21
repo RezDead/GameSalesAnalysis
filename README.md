@@ -22,10 +22,10 @@ docker compose up -d
 
 Create/Load into DB in pgAdmin 4
 
-DB Name: course_db
-User: course_user
-Pass: course_password
-Port: "5432:5432" (if needed to change, change in docker compose and reload)
+- DB Name: course_db
+- User: course_user
+- Pass: course_password
+- Port: "5432:5432" (if needed to change, change in docker compose and reload)
 
 ### To Upload DB State:
 
