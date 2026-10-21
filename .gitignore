@@ -1,0 +1,15 @@
+# ==========================================
+# IDEs and Code Editors
+# ==========================================
+# JetBrains (Rider, IntelliJ, WebStorm, etc.)
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+
+# Visual Studio
+.vs/
+[Bb]in/
+[Oo]bj/

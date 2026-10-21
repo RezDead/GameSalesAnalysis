@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: course-postgres
+    environment:
+      POSTGRES_USER: course_user
+      POSTGRES_PASSWORD: course_password
+      POSTGRES_DB: course_db
+    ports:
+      - "5432:5432"
+    volumes:
+      # Keeps individual local changes isolated and performant
+      - postgres_data:/var/lib/postgresql/data
+      # Automatically restores the group's latest state on a fresh startup
+      - ./db-init:/docker-entrypoint-initdb.d
+
+volumes:
+  postgres_data:
