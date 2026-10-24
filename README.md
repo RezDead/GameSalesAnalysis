@@ -24,7 +24,9 @@ Create/Load into DB in pgAdmin 4
 
 Ensure Docker container is running
 
-`docker compose up -d`
+```
+docker compose up -d
+````
 
 Run the export script then add DB dump (from root)
 
@@ -37,11 +39,15 @@ git add .\database\current.dump
 
 Ensure Docker container is running
 
-`docker compose up -d`
+```
+docker compose up -d
+```
 
 Run the import script (from root)
 
-`.\database\export-dn.ps1`
+```
+.\database\export-dn.ps1
+```
 
 ## Credits
 
