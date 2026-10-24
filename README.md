@@ -11,13 +11,6 @@ It was created for CSCI 370: Introduction to Databases as a group project.
 
 ## How to use
 
-### To Load:
-
-```
-docker compose down -v
-docker compose up -d
-```
-
 ### For DB:
 
 Create/Load into DB in pgAdmin 4
@@ -29,12 +22,26 @@ Create/Load into DB in pgAdmin 4
 
 ### To Upload DB State:
 
+Ensure Docker container is running
+
+`docker compose up -d`
+
+Run the export script then add DB dump (from root)
+
 ```
-docker exec -t course-postgres pg_dump -U course_user course_db > ./db-init/latest_state.sql
-git add db-init/latest_state.sql
+.\database\export-dn.ps1
+git add .\database\current.dump
 ```
 
-This converts DB State to an SQL file and adds it to the commit.
+### To Import DB State:
+
+Ensure Docker container is running
+
+`docker compose up -d`
+
+Run the import script (from root)
+
+`.\database\export-dn.ps1`
 
 ## Credits
 
