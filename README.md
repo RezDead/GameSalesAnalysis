@@ -29,7 +29,7 @@ Ensure Docker container is running
 Run the export script then add DB dump (from root)
 
 ```
-.\database\export-dn.ps1
+docker compose exec postgres bash /internal-scripts/export-db.sh
 git add .\database\current.dump
 ```
 
@@ -41,7 +41,7 @@ Ensure Docker container is running
 
 Run the import script (from root)
 
-`.\database\export-dn.ps1`
+`docker compose exec -it postgres bash /internal-scripts/import.sh`
 
 ## Credits
 
