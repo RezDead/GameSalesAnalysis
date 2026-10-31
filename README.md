@@ -26,21 +26,29 @@ Ensure the docker container is built and running.
 
 From root all you need to do is:
 
-`docker compose up -d --build`
+```
+docker compose up -d --build
+```
 
 Once it has been built all that needs to be done in the future is:
 
-`docker compose up -d`
+```
+docker compose up -d
+```
 
 or
 
-`docker compose down -d`
+```
+docker compose down -d
+```
 
 ### To Upload DB State:
 
 Ensure Docker container is running
 
-`docker compose up -d`
+```
+docker compose up -d
+```
 
 Run the export script then add DB dump (from root)
 
@@ -53,11 +61,15 @@ git add .\database\current.dump
 
 Ensure Docker container is running
 
-`docker compose up -d`
+```
+docker compose up -d
+```
 
 Run the import script (from root)
 
-`docker compose exec -it postgres bash /internal-scripts/import-db.sh`
+```
+docker compose exec -it postgres bash /internal-scripts/import-db.sh
+```
 
 ## Credits
 
