@@ -15,10 +15,11 @@ It was created for CSCI 370: Introduction to Databases as a group project.
 
 Create/Load into DB in pgAdmin 4
 
+- Host: localhost
+- Port: 5432
 - DB Name: course_db
 - User: course_user
 - Pass: course_password
-- Port: "5432:5432" (if needed to change, change in docker compose and reload)
 
 ### For Container:
 
