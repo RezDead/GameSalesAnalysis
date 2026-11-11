@@ -13,3 +13,10 @@
 .vs/
 [Bb]in/
 [Oo]bj/
+
+# ==========================================
+# Source Datasets
+# ==========================================
+SourceData/games_data.csv
+SourceData/steam_data.csv
+SourceData/sales_data.csv
