@@ -1,16 +1,45 @@
 services:
-  postgres:
-    build: .
-    container_name: course-postgres
-    environment:
-      POSTGRES_USER: course_user
-      POSTGRES_PASSWORD: course_password
-      POSTGRES_DB: course_db
+  web:
+    image: website:1.0.0
+    container_name: ${WEBSITE_HOST}
+    build:
+      context: ./website
+      dockerfile: Dockerfile
+    env_file: .env
     ports:
-      - "5432:5432"
+      - ${WEBSITE_PORT}:${WEBSITE_PORT}
+    volumes:
+      - ./website:/website
+      - website-v-node-modules:/website/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: database:1.0.0
+    container_name: ${POSTGRES_HOST}
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./database:/backups
+      - ./database/backups:/backups
+    command: "-p ${POSTGRES_PORT}"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB} -p ${POSTGRES_PORT}"]
+      start_period: 0s
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data:
+    name: "postgres_data"
+  website-v-node-modules:
+    name: "website-v-node-modules"
