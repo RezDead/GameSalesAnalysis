@@ -11,16 +11,6 @@ It was created for CSCI 370: Introduction to Databases as a group project.
 
 ## How to use
 
-### For DB:
-
-Create/Load into DB in pgAdmin 4
-
-- Host: localhost
-- Port: 5432
-- DB Name: course_db
-- User: course_user
-- Pass: course_password
-
 ### For Container:
 
 Ensure the docker container is built and running.
@@ -28,7 +18,7 @@ Ensure the docker container is built and running.
 From root all you need to do is:
 
 ```
-docker compose up -d --build
+docker compose --env-file .env up --build
 ```
 
 Once it has been built all that needs to be done in the future is:
@@ -43,7 +33,17 @@ or
 docker compose down -d
 ```
 
-### To Upload DB State:
+### For DB:
+
+Create/Load into DB in pgAdmin 4
+
+- Host: localhost
+- Port: 5432
+- DB Name: course_db
+- User: course_user
+- Pass: course_password
+
+#### To Upload DB State:
 
 Ensure Docker container is running
 
@@ -58,7 +58,7 @@ docker compose exec postgres bash /internal-scripts/export-db.sh
 git add .\database\current.dump
 ```
 
-### To Import DB State:
+#### To Import DB State:
 
 Ensure Docker container is running
 
@@ -72,8 +72,18 @@ Run the import script (from root)
 docker compose exec -it postgres bash /internal-scripts/import-db.sh
 ```
 
+### For Website:
+
+Ensure Docker container is running
+
+```
+docker compose up -d
+```
+
+Connect to website: http://localhost:8000/
+
 ## Credits
 
-- Julian Kroeger-Miller
-- Kaiya Hatashita
-- Uriel Gonzalez
+- Julian Kroeger-Miller - @RezDead
+- Kaiya Hatashita - @klhatashita
+- Uriel Gonzalez - @ugonzalez001
